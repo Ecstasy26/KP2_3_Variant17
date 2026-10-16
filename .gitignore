@@ -1,0 +1,23 @@
+# Dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+dev-dist/
+
+# Local settings
+.env
+.env.*
+!.env.example
+.dev.vars*
+.wrangler/
+*.local
+
+# Logs
+logs/
+*.log
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
