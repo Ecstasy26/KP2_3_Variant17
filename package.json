@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framework7": "9.2.0",
+    "framework7-icons": "^5.0.5",
     "framework7-vue": "9.2.0",
     "vue": "3.5.44"
   },

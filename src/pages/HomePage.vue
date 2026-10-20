@@ -1,45 +1,58 @@
 <template>
   <f7-page name="home">
-    <f7-navbar title="TaskFlow" />
+    <f7-navbar title="TaskFlow">
+      <f7-nav-right>
+        <f7-link href="/about/"><f7-icon f7="info_circle" /></f7-link>
+      </f7-nav-right>
+    </f7-navbar>
 
     <div class="app-content">
-      <div class="welcome-block">
-        <h1>Мої завдання</h1>
-        <p>Керуйте завданнями та відстежуйте їх виконання.</p>
+      <div class="page-heading">
+        <h1>Головна</h1>
+        <p>Огляд ваших завдань</p>
       </div>
-
-      <div class="summary-card">
-        <div>
-          <span class="summary-label">Виконано завдань</span>
-          <div class="summary-value">{{ completedCount }} / {{ tasks.length }}</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <f7-icon f7="square_list" />
+          <div class="stat-value">{{ totalTasks }}</div>
+          <div class="stat-label">Усього завдань</div>
         </div>
-        <div class="summary-icon">✓</div>
+        <div class="stat-card stat-card-success">
+          <f7-icon f7="checkmark_circle" />
+          <div class="stat-value">{{ completedTasks }}</div>
+          <div class="stat-label">Виконано</div>
+        </div>
       </div>
-
-      <div class="section-header">
-        <h2>Список завдань</h2>
-        <span>{{ tasks.length }} завдань</span>
+      <div class="section-heading">
+        <h2>Останні завдання</h2>
+        <f7-link href="/tasks/">Переглянути всі</f7-link>
       </div>
-
       <div class="task-list">
-        <TaskCard v-for="task in tasks" :key="task.id" :task="task" />
-      </div>
+        <div v-for="task in recentTasks" :key="task.id" class="task-row">
+          <f7-icon
+            :f7="task.completed ? 'checkmark_circle_fill' : 'circle'"
+            :class="{ 'completed-icon': task.completed }"
+          />
 
-      <f7-button fill large href="/about/" class="about-button">
-        Про застосунок
+          <span>{{ task.title }}</span>
+        </div>
+      </div>
+      <f7-button fill large href="/tasks/" class="page-action">
+        Перейти до завдань
       </f7-button>
     </div>
+    <template #fixed>
+      <AppTabbar active="home" />
+    </template>
   </f7-page>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import TaskCard from '../components/TaskCard.vue';
-import { tasks as initialTasks } from '../data/tasks.js';
+import { computed } from 'vue';
+import AppTabbar from '../components/AppTabbar.vue';
+import { tasks } from '../data/tasks.js';
 
-const tasks = ref(initialTasks);
-
-const completedCount = computed(() => {
-  return tasks.value.filter(task => task.status === 'done').length;
-});
+const totalTasks = computed(() => tasks.length);
+const completedTasks = computed(() => tasks.filter((t) => t.completed).length);
+const recentTasks = computed(() => tasks.slice(-3).reverse());
 </script>
