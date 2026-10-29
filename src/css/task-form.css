@@ -1,0 +1,72 @@
+/* ПЗ 2.6: форми TaskFlow */
+.tf4-new-task {
+  margin-top: 19px; padding: 12px 19px; border: 1px solid #3bb9e9;
+  border-radius: 10px; background: #087cad; color: #fff;
+  font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+}
+.tf4-new-task:hover { background: #1394c9; }
+.tf4-form-section { margin-top: 22px; scroll-margin-top: 75px; }
+.tf4-form-panel {
+  padding: 22px; border: 1px solid #2a405b; border-radius: 15px;
+  background: #142237; color: #edf4ff;
+}
+.tf4-form-heading {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 14px; margin-bottom: 20px;
+}
+.tf4-form-heading h2 { margin: 8px 0 0; color: #fff; font-size: 22px; }
+.tf4-close, .tf4-cancel {
+  padding: 10px 14px; border: 1px solid #46617d; border-radius: 9px;
+  background: #20344b; color: #d9e9fd; cursor: pointer;
+}
+.tf4-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.tf4-field { display: flex; flex-direction: column; min-width: 0; gap: 7px; }
+.tf4-field--wide { grid-column: 1 / -1; }
+
+
+
+
+.tf4-field label { color: #e1efff; font-size: 13px; font-weight: 700; }
+.tf4-field input, .tf4-field textarea, .tf4-field select {
+  box-sizing: border-box; width: 100%; min-height: 44px;
+  padding: 11px 12px; border: 1px solid #42617d; border-radius: 9px;
+  background: #0c192b; color: #f4f9ff; color-scheme: dark;
+  font: inherit; font-size: 14px;
+}
+.tf4-field textarea { min-height: 100px; resize: vertical; }
+.tf4-field input::placeholder, .tf4-field textarea::placeholder { color: #8fa7bf; }
+.tf4-field input:focus, .tf4-field textarea:focus, .tf4-field select:focus {
+  outline: 2px solid #49bce7; outline-offset: 1px;
+}
+.tf4-field input[aria-invalid="true"],
+.tf4-field textarea[aria-invalid="true"],
+.tf4-field select[aria-invalid="true"] { border-color: #ed7184; }
+.tf4-field small { color: #9fb3ca; font-size: 11px; }
+.tf4-error { margin: 0; color: #ff9fad; font-size: 12px; }
+.tf4-preview {
+  padding: 15px 17px; border: 1px dashed #3b759a; border-radius: 12px;
+  background: #122d42;
+}
+.tf4-preview strong { color: #8bdff7; font-size: 12px; }
+.tf4-preview p { margin: 10px 0 6px; color: #fff; font-size: 17px; font-weight: 700; }
+.tf4-preview span { color: #b5cfdf; font-size: 12px; }
+.tf4-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.tf4-save {
+  padding: 11px 18px; border: 1px solid #39bfe8; border-radius: 9px;
+  background: #087cad; color: #fff; font-family: inherit; font-size: 13px; font-weight: 700; cursor:
+pointer;
+}
+.tf4-save:hover { background: #1598c9; }
+.tf4-feedback {
+  margin: 18px 0 0; padding: 12px 15px; border: 1px solid #3b806e;
+  border-radius: 10px; background: #143e34; color: #baf4db; font-size: 13px;
+}
+.tf4-new-task:focus-visible, .tf4-close:focus-visible,
+.tf4-save:focus-visible, .tf4-cancel:focus-visible {
+  outline: 2px solid #83e9ff; outline-offset: 3px;
+}
+@media (max-width: 740px) {
+  .tf4-form { grid-template-columns: 1fr; }
+  .tf4-form-panel { padding: 16px; }
+  .tf4-form-heading h2 { font-size: 19px; }
+}

@@ -2,14 +2,22 @@
 import { computed } from 'vue'
 import StatusBadge from './StatusBadge.vue'
 import PriorityBadge from './PriorityBadge.vue'
-const props = defineProps({ task: { type: Object, required: true } })
-const emit = defineEmits(['status-change', 'priority-change'])
+
+const props = defineProps({
+  task: { type: Object, required: true },
+  editable: { type: Boolean, default: false },
+})
+const emit = defineEmits(['status-change', 'priority-change', 'edit'])
+
 const statusSequence = ['todo', 'progress', 'done']
 const prioritySequence = ['low', 'medium', 'high']
+
 const statusActionText = computed(() => ({
-  todo: 'Взяти в роботу', progress: 'Завершити',
+  todo: 'Взяти в роботу',
+  progress: 'Завершити',
   done: 'Повернути в план',
 })[props.task.status] || 'Змінити статус')
+
 const formattedDate = computed(() => {
   if (!props.task.dueDate) return 'Без терміну'
   const date = new Date(`${props.task.dueDate}T12:00:00`)
@@ -17,7 +25,12 @@ const formattedDate = computed(() => {
   return new Intl.DateTimeFormat('uk-UA', {
     day: '2-digit', month: 'long', year: 'numeric',
   }).format(date)
+
+
+
+
 })
+
 function changeStatus() {
   const index = statusSequence.indexOf(props.task.status)
   emit('status-change', {
@@ -25,6 +38,7 @@ function changeStatus() {
     status: statusSequence[(index + 1) % statusSequence.length],
   })
 }
+
 function changePriority() {
   const index = prioritySequence.indexOf(props.task.priority)
   emit('priority-change', {
@@ -33,6 +47,7 @@ function changePriority() {
   })
 }
 </script>
+
 <template>
   <f7-card class="tf3-task-card">
     <f7-card-content>
@@ -49,11 +64,12 @@ function changePriority() {
         <div class="tf3-meta-date">Термін: {{ formattedDate }}</div>
       </div>
       <div class="tf3-card-actions">
-
         <button type="button" class="tf3-action tf3-action--primary"
           @click="changeStatus">{{ statusActionText }}</button>
         <button type="button" class="tf3-action"
           @click="changePriority">Змінити пріоритет</button>
+        <button v-if="editable" type="button" class="tf3-action"
+          @click="emit('edit', task.id)">Редагувати</button>
       </div>
     </f7-card-content>
   </f7-card>
