@@ -1,0 +1,137 @@
+/* Практична робота № 5. Доповнення до наявних стилів TaskFlow. */
+
+.tf5-panel {
+  margin: 22px 0;
+  padding: 20px;
+  border: 1px solid #28435f;
+  border-radius: 16px;
+  background: #13243a;
+  color: #edf4ff;
+}
+
+.tf5-panel h2 {
+  margin: 0 0 18px;
+  font-size: 19px;
+  color: #ffffff;
+}
+
+.tf5-form,
+.tf5-controls-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.tf5-form-grid,
+.tf5-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tf5-form label,
+.tf5-controls-grid label {
+  display: grid;
+  gap: 7px;
+  color: #d7e4f5;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tf5-form input,
+.tf5-form textarea,
+.tf5-form select,
+.tf5-controls-grid input,
+.tf5-controls-grid select {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #39526f;
+  border-radius: 9px;
+  background: #0c1728;
+  color: #f0f7ff;
+  font: inherit;
+  outline-offset: 2px;
+  color-scheme: dark;
+}
+
+.tf5-form textarea {
+  resize: vertical;
+}
+
+.tf5-search {
+  grid-column: 1 / -1;
+}
+
+.tf5-actions,
+.tf5-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tf5-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 39px;
+  padding: 9px 14px;
+  border: 1px solid #526c8c;
+  border-radius: 9px;
+  background: #203550;
+  color: #eff7ff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tf5-btn--primary {
+  border-color: #39afe0;
+  background: #168fbd;
+  color: #ffffff;
+}
+
+.tf5-btn:hover {
+  filter: brightness(1.12);
+}
+
+.tf5-new {
+  margin-top: 18px;
+}
+
+.tf5-error {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #d26d6d;
+  border-radius: 8px;
+  color: #ffd1d1;
+  background: #572a35;
+}
+
+.tf5-danger {
+  border-color: #b85d6a;
+  color: #ffb6be;
+}
+
+.tf5-empty {
+  padding: 26px;
+  border: 1px dashed #527090;
+  border-radius: 14px;
+  text-align: center;
+  color: #dae7f6;
+}
+
+@media (max-width: 680px) {
+  .tf5-form-grid,
+  .tf5-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tf5-panel {
+    padding: 16px;
+  }
+  .tf5-search {
+    grid-column: auto;
+  }
+}
