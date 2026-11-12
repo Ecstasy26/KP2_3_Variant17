@@ -13,6 +13,7 @@
     "framework7": "9.2.0",
     "framework7-icons": "^5.0.5",
     "framework7-vue": "9.2.0",
+    "idb": "^8.0.4",
     "pinia": "^4.1.0",
     "vue": "3.5.44"
   },

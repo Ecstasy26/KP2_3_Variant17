@@ -7,9 +7,20 @@ import 'framework7/css/bundle';
 import 'framework7-icons/css/framework7-icons.css';
 import './css/app.css';
 import App from './App.vue';
+import { initializePersistence } from './services/persistence.js';
 
 Framework7.use(Framework7Vue);
 const app = createApp(App);
-app.use(createPinia());
+const pinia = createPinia();
+app.use(pinia);
 registerComponents(app);
-app.mount('#app');
+
+async function bootstrap() {
+  await initializePersistence(pinia);
+  app.mount('#app');
+}
+
+bootstrap().catch((error) => {
+  console.error('TaskFlow: помилка запуску:', error);
+  app.mount('#app');
+});

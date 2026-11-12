@@ -1,0 +1,27 @@
+/* ПЗ 2.10: індикатор локального збереження. */
+.tf7-persistence {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin: 18px 0;
+  padding: 13px 16px;
+  border: 1px solid #385a7a;
+  border-radius: 12px;
+  background: #142a42;
+  color: #e4f2ff;
+  font-size: 14px;
+}
+.tf7-persistence strong { color: #ffffff; }
+.tf7-persistence span { flex: 1 1 240px; }
+.tf7-persistence--saved { border-color: #327c78; }
+.tf7-persistence--saving { border-color: #b49346; }
+.tf7-persistence--loading { border-color: #557391; }
+.tf7-persistence--error {
+  border-color: #bb5c68;
+  background: #482938;
+}
+@media (max-width: 680px) {
+  .tf7-persistence { align-items: flex-start; flex-direction: column; }
+  .tf7-persistence span { flex-basis: auto; }
+}
